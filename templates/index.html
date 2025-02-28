@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>WikiSwipe Frontend</title>
+  </head>
+  <body>
+    <h1>Simple WikiSwipe Article</h1>
+    <div id="article"></div>
+    <button id="likeButton">Like</button>
+
+    <script>
+      // Example: fetch a single article
+      // You can replace this with real logic inside your app
+      const displayArticle = () => {
+        // Hard-coded example article
+        const articleDiv = document.getElementById('article');
+        articleDiv.innerHTML = `
+          <h2>Article Title</h2>
+          <p>This is a sample article summary or content.</p>
+        `;
+      };
+
+      // POST request to like the article
+      const likeArticle = async () => {
+        await fetch('http://localhost:8000/like_article', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ article_id: 1, user_id: 1 })
+        });
+        alert("Article liked!");
+      };
+
+      document.getElementById('likeButton').addEventListener('click', likeArticle);
+
+      // Load article display on page load
+      displayArticle();
+    </script>
+  </body>
+</html>

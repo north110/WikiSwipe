@@ -13,6 +13,7 @@ class User(Base):
     password_hash = Column(String, nullable=False)
     created_at = Column(DateTime, default=datetime.datetime.utcnow)
     interactions = relationship("UserInteraction", back_populates="user")
+    keywords = Column(Text, nullable=True)
 
 class Article(Base):
     __tablename__ = 'articles'
